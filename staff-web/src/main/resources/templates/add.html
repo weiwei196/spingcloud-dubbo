@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap-table.css}" />
+    <link rel="stylesheet" th:href="@{/css/bootstarp/bootstrap.css}" />
+    <link rel="stylesheet" th:href="@{/css/bootstarp/bootstrap-table.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>新增员工</h1>
+        <form class="form-horizontal" th:action="@{/add}" method="post">
+            <input type="hidden" name="staffId" th:value="${staff.staffId}">
+            <div class="form-group">
+                <label for="staffName" class="col-sm-2 control-label">员工名称</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="staffName"  id="staffName" placeholder="员工名称" th:value="${staff.staffName}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="staffSection" class="col-sm-2 control-label">员工部门</label>
+                <div class="col-sm-10">
+                    <!--<input type="text" class="form-control" name="staffSection"  id="staffSection" placeholder="员工部门" th:value="${staff.staffSection}"/>-->
+                    <select th:field="${staff.staffSection}" th:value="${staff.staffSection}" name="staffSection" lay-verify="required">
+                        <option value="">请选择分配部门</option>
+                        <option th:selected="${staff.staffSection==1}" value="1">保卫科</option>
+                        <option th:selected="${staff.staffSection==2}" value="2">保安科</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="entryTime" class="col-sm-2 control-label">入职时间</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" name="entryTime"  id="entryTime" placeholder="入职时间" th:value="${staff.entryTime}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="staffPost" class="col-sm-2 control-label">员工岗位</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="staffPost"  id="staffPost" placeholder="员工岗位" th:value="${staff.staffPost}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="staffDuty" class="col-sm-2 control-label">员工职责</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="staffDuty"  id="staffDuty" placeholder="员工职责" th:value="${staff.staffDuty}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input type="submit" value="提交" class="btn btn-info" />
+                    <a th:href="@{/staffList}" class="btn btn-info">返回</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
